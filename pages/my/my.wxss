@@ -1,0 +1,41 @@
+.one{
+  display: flex;
+  width: 100vw;
+  height: 10vh;
+  font-size: 28px;
+}
+
+.nameText{
+  margin-left: 50rpx;
+  margin-top: 10rpx;
+}
+
+.avatar{
+  margin-left: 500rpx;
+}
+
+.two{
+  display: flex;
+  margin-top:60px;
+  width: 100vw;
+  height: 50px;
+}
+
+.two .book{
+  width: 40px;
+  height: 40px;
+  margin-left: 20rpx;
+}
+
+.two text{
+  font-size: 20px;
+  margin-left: 20rpx;
+  margin-top:5px;
+}
+
+.two .right{
+  margin-top: 5px;
+  margin-left: 400rpx;
+  width: 25px;
+  height: 25px;
+}

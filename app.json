@@ -1,13 +1,29 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/my/my",
     "pages/logs/logs"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
+    "navigationBarTitleText": "MiniVote",
     "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "list": [{
+      "pagePath": "pages/index/index",
+      "text": "课程",
+      "iconPath": "/images/study.png",
+      "selectedIconPath": "/images/study_1.png"
+    },
+    {
+      "pagePath": "pages/my/my",
+      "text": "我的",
+      "iconPath": "/images/person.png",
+      "selectedIconPath": "/images/person_1.png"
+    }
+    ]
   },
   "style": "v2",
   "sitemapLocation": "sitemap.json"

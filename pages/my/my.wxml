@@ -1,0 +1,13 @@
+<!-- 昵称和头像 -->
+<view class="one">
+  <text class="nameText">{{name}}</text>
+  <i-avatar src="{{src}}" size="large" i-class="avatar"></i-avatar>
+</view>
+
+<!-- 错题本 -->
+<view class="two">
+  <image src="/images/book.png" class="book"></image>
+  <text>错题本</text>
+  <image src="/images/right.png" class="right"></image>
+</view>
+
