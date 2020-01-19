@@ -1,31 +1,39 @@
 var app = getApp();
 
-// pages/my/my.js
+// pages/login/login.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    name: "马驰",
-    src: "/images/one.jpg"
+    canIUse: wx.canIUse('button.open-type.getUserInfo')
+  },
+
+  onAuth() {
+    wx.getSetting({
+      success: (res) => {
+        if (res.authSetting['scope.userInfo']) {
+          wx.reLaunch({
+            url: '../index/index',
+          })
+        }
+      }
+    })
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.setData({
-      name: app.globalData.userInfo.nickName,
-      src: app.globalData.userInfo.avatarUrl
-    })
+
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    
+
   },
 
   /**
