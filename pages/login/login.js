@@ -14,12 +14,14 @@ Page({
     wx.getSetting({
       success: (res) => {
         if (res.authSetting['scope.userInfo']) {
+          app.globalData.userInfo = res.userInfo;
           wx.reLaunch({
             url: '../index/index',
           })
         }
       }
     })
+
   },
 
   /**

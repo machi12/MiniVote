@@ -1,6 +1,9 @@
 //app.js
 App({
   onLaunch: function () {
+
+    //var that = this;
+
     if (!wx.cloud) {
       console.error('请使用 2.2.3 或以上的基础库以使用云能力')
     } else {
@@ -35,10 +38,27 @@ App({
           })
         }
       }
+    });
+
+    // 调用云函数,获取用户的openid
+    wx.cloud.callFunction({
+      name: 'login',
+      data: {},
+      success: res => {
+        console.log('[云函数] [login] user openid: ', res.result.openid);
+        this.globalData.openid = res.result.openid;
+        console.log(this.globalData.openid);
+      },
+      fail: err => {
+        console.error('[云函数] [login] 调用失败', err)
+      }
     })
   },
   
   globalData: {
-    userInfo: null
+    userInfo: null,
+    openid: null,
+    appid: 'wxabda5fe0c796b4ad',
+    secret: '6312dce59b9c56b90c7145db90200c1c'
   }
 })
