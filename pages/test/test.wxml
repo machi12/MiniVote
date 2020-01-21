@@ -1,0 +1,4 @@
+<button bindtap="add">添加数据</button>
+<button bindtap="isUser">查询学生</button>
+
+<view>{{one}}</view>

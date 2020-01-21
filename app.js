@@ -2,8 +2,6 @@
 App({
   onLaunch: function () {
 
-    //var that = this;
-
     if (!wx.cloud) {
       console.error('请使用 2.2.3 或以上的基础库以使用云能力')
     } else {
@@ -48,11 +46,62 @@ App({
         console.log('[云函数] [login] user openid: ', res.result.openid);
         this.globalData.openid = res.result.openid;
         console.log(this.globalData.openid);
+
+        //console.log("machi", this.globalData.openid);
+        const db = wx.cloud.database({
+          env: 'test-3thxx'
+        });
+        // db.collection('user').where({
+        //   _id: this.globalData.openid
+        // }).get({
+        //   success: res => {
+        //     console.log("one", res.data[0]._id);
+        //     if (res.data[0]._id == null) {
+        //       wx.cloud.callFunction({
+        //         name: 'add',
+        //         data: {
+        //           uid: "one"
+        //         },
+        //         complete: res => {
+        //           console.log('callFunction test result: ', res);
+        //           console.log("用户成功添加");
+        //         }
+        //       })
+        //     }
+        //     else {
+        //       console.log("该用户已经存在");
+        //     }
+        //   }
+        // })
+        console.log(this.globalData.openid);
+
+        db.collection('user').where({
+          _id: this.globalData.openid
+        }).get().then(res => {
+          console.log(res.data.length);
+          if (res.data.length == 0) {
+            //console.log(res.data[0]);
+            wx.cloud.callFunction({
+              name: 'add',
+              data: {
+                uid: this.globalData.openid
+              }
+            }).then(res => {
+              console.log('callFunction test result: ', res);
+              console.log("用户成功添加");
+            })
+          }
+          else {
+            console.log(res.data[0]);
+            console.log("该用户已经存在");
+          }
+        })
       },
       fail: err => {
         console.error('[云函数] [login] 调用失败', err)
       }
-    })
+    });
+
   },
   
   globalData: {
@@ -61,4 +110,7 @@ App({
     appid: 'wxabda5fe0c796b4ad',
     secret: '6312dce59b9c56b90c7145db90200c1c'
   }
+
+  
 })
+
