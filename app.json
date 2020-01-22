@@ -4,7 +4,10 @@
     "pages/my/my",
     "pages/logs/logs",
     "pages/login/login",
-    "pages/test/test"
+    "pages/test/test",
+    "pages/createClass/createClass",
+    "pages/successClass/successClass",
+    "pages/myclass/myclass"
   ],
   "window": {
     "backgroundTextStyle": "light",

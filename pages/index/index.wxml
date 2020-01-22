@@ -22,13 +22,5 @@
     <button bindtap="handleOpen1" class="btn" size="mini">+</button>
   </view>
   <i-action-sheet visible="{{ visible1 }}" actions="{{ actions1 }}" show-cancel bind:cancel="handleCancel1" bind:click="handleClickItem1" />
-
 </view>
-
-<view>
-  
-</view>
-
-
-
 

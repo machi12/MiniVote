@@ -1,109 +1,88 @@
-// pages/test/test.js
+// 关于本示例的 $Message ，可以查看 Message 组件的介绍
+
+const { $Message } = require('../../dist/base/index');
+
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-    one: "无"
-  },
-
-  add: function(){
-    wx.cloud.callFunction({
-      name: 'add',
-      data: {
-        uid: "machi12"
+    visible1: false,
+    actions1: [
+      {
+        name: '选项1',
       },
-      complete: res => {
-        console.log('callFunction test result: ', res)
+      {
+        name: '选项2'
+      },
+      {
+        name: '去分享',
+        icon: 'share',
+        openType: 'share'
       }
-    })
+    ],
+    actions2: [
+      {
+        name: '删除',
+        color: '#ed3f14'
+      }
+    ]
   },
 
-  isUser: function(){
-    // wx.cloud.callFunction({
-    //   name: 'isUser',
-    //   data: {
-    //     openid: 'machi12'
-    //   },
-    //   success: res => {
-    //     console.log('callFunction test result: ', res.data);
-    //     this.setData({
-    //       one: res.data
-    //     })
-    //   }
-    // })
+  onShareAppMessage() {
+    return {
+      title: 'iView Weapp',
+      imageUrl: 'https://file.iviewui.com/iview-weapp-logo.png'
+    };
+  },
 
-    const db = wx.cloud.database({
-      env: 'test-3thxx'
+  handleOpen1() {
+    this.setData({
+      visible1: true
     });
-    db.collection('user').where({
-      _id: "machi12"
-    }).get({
-      success: res => {
-        console.log("one", res.data);
-        this.setData({
-          one: res.data[0]._id
-        })
-      }
-    })
-    
-
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
+  handleCancel1() {
+    this.setData({
+      visible1: false
+    });
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+  handleOpen2() {
+    this.setData({
+      visible2: true
+    });
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
+  handleCancel2() {
+    this.setData({
+      visible2: false
+    });
   },
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
+  handleClickItem1({ detail }) {
+    const index = detail.index + 1;
 
+    $Message({
+      content: '点击了选项' + index
+    });
   },
 
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
+  handleClickItem2() {
+    const action = [...this.data.actions2];
+    action[0].loading = true;
 
-  },
+    this.setData({
+      actions2: action
+    });
 
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+    setTimeout(() => {
+      action[0].loading = false;
+      this.setData({
+        visible2: false,
+        actions2: action
+      });
+      $Message({
+        content: '删除成功！',
+        type: 'success'
+      });
+    }, 2000);
   }
-})
+});

@@ -1,0 +1,17 @@
+<view class='imagesize'>
+  <image src="/images/duihao.png" class='in-image'>
+  </image>
+</view>
+<view class='imagesize'>
+  <text class="font_one">创建成功</text>
+</view>
+<view class='imagesize'>
+  <text class="font_two">您可以进入班级邀请学生</text>
+</view>
+<view class="one">
+  <text class="font_three">您创建的课程</text>
+  <i-panel class="cell-panel-demo">
+    <i-cell title="{{cname}}" is-link value="进入课程"></i-cell>
+  </i-panel>
+</view>
+

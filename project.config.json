@@ -10,10 +10,19 @@
 		"postcss": true,
 		"minified": true,
 		"newFeature": true,
-		"autoAudits": false,
 		"coverView": true,
+		"autoAudits": false,
 		"showShadowRootInWxmlPanel": true,
-		"scopeDataCheck": false
+		"scopeDataCheck": false,
+		"checkInvalidKey": true,
+		"checkSiteMap": true,
+		"uploadWithSourceMap": true,
+		"babelSetting": {
+			"ignore": [],
+			"disablePlugins": [],
+			"outputPath": ""
+		},
+		"nodeModules": true
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.10.1",
@@ -54,6 +63,20 @@
 					"id": -1,
 					"name": "test",
 					"pathName": "pages/test/test",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/createClass/createClass",
+					"pathName": "pages/createClass/createClass",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "successClass",
+					"pathName": "pages/successClass/successClass",
 					"scene": null
 				}
 			]

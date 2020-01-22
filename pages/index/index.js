@@ -47,7 +47,20 @@ Page({
 
   // 点击选择创建课程或者加入班级
   handleClickItem1({ detail }) {
-    
+    const index = detail.index;
+
+    if(index == 0){
+      console.log("按钮1被点击");
+      wx.reLaunch({
+        url: '../createClass/createClass',
+      })
+    }
+    else if(index == 1){
+      console.log("按钮2被点击");
+    }
+    else{
+      console.log("action-sheet is error");
+    }
   },
   
   handleOpen1() {
