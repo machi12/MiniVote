@@ -1,3 +1,6 @@
+const { $Message } = require('../../dist/base/index');
+var app = getApp();
+
 // pages/joinclass/joinclass.js
 Page({
 
@@ -18,7 +21,51 @@ Page({
         type: 'error'
       });
     } else {
-      
+      const db = wx.cloud.database();
+      db.collection('class').where({
+        yid: value + ""
+      }).get().then(res => {
+        console.log(res.data.length);
+        if (res.data.length == 0) {
+          //console.log(res.data[0]);
+          $Message({
+            content: '课程邀请码有误',
+            type: 'error'
+          });
+        }
+        else {
+          wx.cloud.callFunction({
+            name: 'joinClass',
+            data: {
+              cid: value + "",
+              mid: app.globalData.openid  
+            },
+            success: res => {
+              wx.reLaunch({
+                url: '../myclass/myclass?cid=' + value,
+              })
+            },
+            fail: res => {
+              $Message({
+                content: '加入课程失败',
+                type: 'error'
+              });
+            }
+          })
+          // .then(res => {
+          //   console.log('callFunction test result: ', res);
+          //   if (res.errMsg = "cloud.callFunction:ok"){
+          //     wx.reLaunch({
+          //       url: '../myclass/myclass?cid=' + value,
+          //     })
+          //   }
+          //   else{
+
+          //   }
+            //console.log("用户成功添加");
+         // })
+        }
+      })
     }
   },
 
