@@ -7,7 +7,8 @@
     "pages/test/test",
     "pages/createClass/createClass",
     "pages/successClass/successClass",
-    "pages/myclass/myclass"
+    "pages/myclass/myclass",
+    "pages/joinclass/joinclass"
   ],
   "window": {
     "backgroundTextStyle": "light",

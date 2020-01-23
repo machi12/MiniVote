@@ -57,6 +57,9 @@ Page({
     }
     else if(index == 1){
       console.log("按钮2被点击");
+      wx.reLaunch({
+        url: '../joinclass/joinclass',
+      })
     }
     else{
       console.log("action-sheet is error");

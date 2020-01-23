@@ -1,0 +1,13 @@
+<form bindsubmit="formSubmit" bindreset="formReset">
+  <view class="section">
+    <view class="section__title">加入课程</view>
+    <input name="input" placeholder="请输入课程邀请码" class=".section_input"/>
+  </view>
+  <view class="btn-area">
+    <button formType="submit">完成</button>
+  </view>
+</form>
+
+<i-message id="message" />
+
+

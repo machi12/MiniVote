@@ -11,7 +11,7 @@
 <view class="one">
   <text class="font_three">您创建的课程</text>
   <i-panel class="cell-panel-demo">
-    <i-cell title="{{cname}}" is-link value="进入课程"></i-cell>
+    <i-cell title="{{cname}}" is-link value="进入课程" url="/pages/myclass/myclass"></i-cell>
   </i-panel>
 </view>
 

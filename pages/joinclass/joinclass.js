@@ -1,7 +1,4 @@
-const { $Message } = require('../../dist/base/index');
-var app = getApp();
-
-// pages/createClass/createClass.js
+// pages/joinclass/joinclass.js
 Page({
 
   /**
@@ -11,37 +8,18 @@ Page({
 
   },
 
-// 提交表单函数
+  // 提交表单函数
   formSubmit: function (e) {
     const value = e.detail.value.input;
     console.log('form发生了submit事件，携带数据为：', value);
-    if(value == ""){
+    if (value == "") {
       $Message({
-        content: '请输入课程名称',
+        content: '请输入课程邀请码',
         type: 'error'
       });
-    }else{
-      var yyid = this.generateUuid();
-      wx.cloud.callFunction({
-        name: 'addClass',
-        data: {
-          cname: value,
-          tid: app.globalData.openid,
-          yid: yyid + ""
-        },
-        success: res => {
-          console.log("success", res);
-          wx.reLaunch({
-            url: '../successClass/successClass?cname=' + value,
-          })
-        }
-      })
+    } else {
+      
     }
-  },
-
-  //生成唯一不重复ID
-  generateUuid: function (length = 2) {
-    return Number(Math.random().toString().substr(3, length) + Date.now()).toString(36);
   },
 
   /**

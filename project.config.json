@@ -77,6 +77,13 @@
 					"id": -1,
 					"name": "successClass",
 					"pathName": "pages/successClass/successClass",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "joinclass",
+					"pathName": "pages/joinclass/joinclass",
 					"scene": null
 				}
 			]
