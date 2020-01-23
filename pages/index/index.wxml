@@ -23,4 +23,10 @@
   </view>
   <i-action-sheet visible="{{ visible1 }}" actions="{{ actions1 }}" show-cancel bind:cancel="handleCancel1" bind:click="handleClickItem1" />
 </view>
+<view>
+  <block wx:for="{{}}" wx:key="{{item.id}}">
+    <i-card title="{{cname}}" extra=">" thumb="/images/class.png" i-class="card-demo">
+    </i-card>
+  </block>
+</view>
 

@@ -34,11 +34,15 @@ Page({
           });
         }
         else {
+          var _cname = res.data[0].cname;
+          //console.log("cname", cname);
+
           wx.cloud.callFunction({
             name: 'joinClass',
-            data: {
+            data: { 
               cid: value + "",
-              mid: app.globalData.openid  
+              mid: app.globalData.openid,
+              cname: _cname
             },
             success: res => {
               wx.reLaunch({

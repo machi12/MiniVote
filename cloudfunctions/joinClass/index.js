@@ -10,7 +10,8 @@ exports.main = async (event, context) => {
   return await db.collection('classmember').add({
     data: {
       _id: event.cid,
-      mid: event.mid
+      mid: event.mid,
+      cname: event.cname
     }
   })
 }

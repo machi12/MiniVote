@@ -95,7 +95,52 @@ App({
             console.log(res.data[0]);
             console.log("该用户已经存在");
           }
-        })
+        });
+
+        db.collection('class').where({
+          tid: this.globalData.openid
+        }).field({
+          cname: true,
+          _id: false
+        }).get({
+          success: res => {
+            console.log("查询成功", res.data);
+            this.globalData.teach = res.data;
+            // console.log("teach: ", this.globalData.teach);
+            // console.log("teach: ", this.globalData.listen);
+          }
+        });
+
+        // 为teach数组赋值
+        db.collection('class').where({
+          tid: this.globalData.openid
+        }).field({
+          cname: true,
+          _id: false
+        }).get({
+          success: res => {
+            console.log("查询成功", res.data);
+            this.globalData.teach = res.data;
+            // console.log("teach: ", this.globalData.teach);
+            // console.log("teach: ", this.globalData.listen);
+          }
+        });
+
+        // 为listen数组赋值
+        db.collection('classmember').where({
+          mid: this.globalData.openid
+        }).field({
+          cname: true,
+          _id: false
+        }).get({
+          success: res => {
+            console.log("查询成功", res.data);
+            this.globalData.listen = res.data;
+            console.log("listen: ", this.globalData.listen);
+            // console.log("teach: ", this.globalData.listen);
+          }
+        });
+
       },
       fail: err => {
         console.error('[云函数] [login] 调用失败', err)
@@ -108,9 +153,10 @@ App({
     userInfo: null,
     openid: null,
     appid: 'wxabda5fe0c796b4ad',
-    secret: '6312dce59b9c56b90c7145db90200c1c'
+    secret: '6312dce59b9c56b90c7145db90200c1c',
+    teach: [],
+    listen: []
   }
-
   
 })
 

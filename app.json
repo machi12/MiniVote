@@ -2,7 +2,6 @@
   "pages": [
     "pages/index/index",
     "pages/my/my",
-    "pages/logs/logs",
     "pages/login/login",
     "pages/test/test",
     "pages/createClass/createClass",
