@@ -23,7 +23,7 @@ Page({
     } else {
       const db = wx.cloud.database();
       db.collection('class').where({
-        yid: value + ""
+        _id: value + ""
       }).get().then(res => {
         console.log(res.data.length);
         if (res.data.length == 0) {
@@ -51,7 +51,7 @@ Page({
             },
             fail: res => {
               $Message({
-                content: '加入课程失败',
+                content: '您已经加入过该课程了',
                 type: 'error'
               });
             }

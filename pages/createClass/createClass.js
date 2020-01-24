@@ -32,7 +32,7 @@ Page({
         success: res => {
           console.log("success", res);
           wx.reLaunch({
-            url: '../successClass/successClass?cname=' + value,
+            url: "../successClass/successClass?cid=" + yyid + "&" + "cname=" + value,
           })
         }
       })

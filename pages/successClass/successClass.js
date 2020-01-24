@@ -5,7 +5,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    cname: ""
+    cname: "",
+    cid: ""
   },
 
   /**
@@ -13,7 +14,8 @@ Page({
    */
   onLoad: function (options) {
     this.setData({
-      cname: options.cname
+      cname: options.cname,
+      cid: options.cid
     })
   },
 

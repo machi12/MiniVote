@@ -84,6 +84,13 @@
 					"id": -1,
 					"name": "joinclass",
 					"pathName": "pages/joinclass/joinclass",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "myclass",
+					"pathName": "pages/myclass/myclass",
 					"scene": null
 				}
 			]

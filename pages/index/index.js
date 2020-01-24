@@ -31,6 +31,7 @@ Page({
         name: '加入班级'
       }
     ],
+    classList: []
   },
 
   handleOpen1() {
@@ -51,13 +52,13 @@ Page({
 
     if(index == 0){
       console.log("按钮1被点击");
-      wx.reLaunch({
+      wx.navigateTo({
         url: '../createClass/createClass',
       })
     }
     else if(index == 1){
       console.log("按钮2被点击");
-      wx.reLaunch({
+      wx.navigateTo({
         url: '../joinclass/joinclass',
       })
     }
@@ -77,13 +78,139 @@ Page({
     this.setData({
       current: detail.key
     });
+    console.log("key", detail.key);
+
+    if(detail.key == "tab1"){
+      this.setData({
+        classList: app.globalData.teach
+      });
+    }
+    else if(detail.key == "tab2"){
+      this.setData({
+        classList: app.globalData.listen
+      });
+    }
+  },
+
+  // 点击card触发的事件(转到myclass页面)
+  enterPage: function(event){
+    //console.log("进入我的课程");
+    // 获取cid
+    var cid = event.currentTarget.dataset.value;
+    
+    //console.log("点击", cid);
+    wx.navigateTo({
+      url: "../myclass/myclass?cid=" + cid
+    })
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+
+    // 调用云函数,获取用户的openid
+    wx.cloud.callFunction({
+      name: 'login',
+      data: {},
+      success: res => {
+        //console.log('[云函数] [login] user openid: ', res.result.openid);
+
+        app.globalData.openid = res.result.openid;
+
+        //console.log(app.globalData.openid);
+
+        //console.log("machi", this.globalData.openid);
+        const db = wx.cloud.database({
+          env: 'test-3thxx'
+        });
+        // db.collection('user').where({
+        //   _id: this.globalData.openid
+        // }).get({
+        //   success: res => {
+        //     console.log("one", res.data[0]._id);
+        //     if (res.data[0]._id == null) {
+        //       wx.cloud.callFunction({
+        //         name: 'add',
+        //         data: {
+        //           uid: "one"
+        //         },
+        //         complete: res => {
+        //           console.log('callFunction test result: ', res);
+        //           console.log("用户成功添加");
+        //         }
+        //       })
+        //     }
+        //     else {
+        //       console.log("该用户已经存在");
+        //     }
+        //   }
+        // })
+        // console.log(app.globalData.openid);
+
+        db.collection('user').where({
+          _id: app.globalData.openid
+        }).get().then(res => {
+          // console.log(res.data.length);
+          if (res.data.length == 0) {
+            //console.log(res.data[0]);
+            wx.cloud.callFunction({
+              name: 'add',
+              data: {
+                uid: app.globalData.openid
+              }
+            }).then(res => {
+              // console.log('callFunction test result: ', res);
+              // console.log("用户成功添加");
+            })
+          }
+          else {
+            // console.log(res.data[0]);
+            console.log("该用户已经存在");
+          }
+        });
+
+        // 为teach数组赋值
+        db.collection('class').where({
+          tid: app.globalData.openid
+        }).field({
+          cname: true,
+          _id: true
+        }).get({
+          success: res => {
+            // console.log("查询成功", res.data);
+            app.globalData.teach = res.data;
+            this.setData({
+              classList: app.globalData.teach
+            });
+            // console.log("teach: ", this.globalData.teach);
+            // console.log("teach: ", this.globalData.listen);
+          }
+        });
+
+        // 为listen数组赋值
+        db.collection('classmember').where({
+          mid: app.globalData.openid
+        }).field({
+          cname: true,
+          _id: true
+        }).get({
+          success: res => {
+            // console.log("查询成功", res.data);
+            app.globalData.listen = res.data;
+            // console.log("listen: ", app.globalData.listen);
+            // console.log("teach: ", app.globalData.teach);
+          }
+        });
+
+        console.log("end");
+
+      },
+      fail: err => {
+        console.error('[云函数] [login] 调用失败', err)
+      }
+    });
+
   },
 
   /**

@@ -1,2 +1,5 @@
-<!--pages/myclass/myclass.wxml-->
-<text>pages/myclass/myclass.wxml</text>
+<view class="view_one">
+  <text class="text_one">{{cname}}</text>
+</view>
+
+<image src="/images/member.png" class="image_one"></image>

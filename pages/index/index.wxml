@@ -24,8 +24,8 @@
   <i-action-sheet visible="{{ visible1 }}" actions="{{ actions1 }}" show-cancel bind:cancel="handleCancel1" bind:click="handleClickItem1" />
 </view>
 <view>
-  <block wx:for="{{}}" wx:key="{{item.id}}">
-    <i-card title="{{cname}}" extra=">" thumb="/images/class.png" i-class="card-demo">
+  <block wx:for="{{classList}}" wx:key="{{item._id}}">
+    <i-card title="{{item.cname}}" extra=">" thumb="/images/class.png" i-class="card-demo" bindtap="enterPage" data-value="{{item._id}}">
     </i-card>
   </block>
 </view>
