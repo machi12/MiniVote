@@ -1,47 +1,19 @@
-var app = getApp();
-
-// pages/myclass/myclass.js
+// pages/classMember/classMember.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    cname: "高等数学",
-    cid: "ASER6677QS"
-  },
-
-  queryMember: function(){
-    wx.navigateTo({
-      url: "../classMember/classMember?cid=" + this.data.cid
-    })
+    cid: ""
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log("this a happy year", options.cid);
-
-    const cid = options.cid;
-
-    const db = wx.cloud.database();
-
-    db.collection('class').where({
-      _id: cid
-    }).field({
-      cname: true,
-      _id: false
-    }).get({
-      success: res => {
-        console.log("success", res.data);
-        this.setData({
-          cname: res.data[0].cname,
-          cid: cid
-        });
-        console.log(this.data.cname);
-        console.log(this.data.cid);
-      }
+    this.setData({
+      cid: options.cid
     })
   },
 

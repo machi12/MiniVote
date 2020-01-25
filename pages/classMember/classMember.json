@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+        "i-panel": "../../dist/panel/index"
+  }
+}

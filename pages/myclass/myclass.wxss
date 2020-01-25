@@ -13,4 +13,10 @@
 .image_one{
   width: 60px;
   height: 60px;
+  margin-top: 15px;
+  margin-left: 40rpx;
+}
+
+.text_two{
+   margin-left: 32rpx;
 }

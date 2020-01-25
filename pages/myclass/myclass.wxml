@@ -2,4 +2,6 @@
   <text class="text_one">{{cname}}</text>
 </view>
 
-<image src="/images/member.png" class="image_one"></image>
+<image src="/images/member.png" class="image_one" bindtap="queryMember"></image>
+<text>\n</text>
+<text class="text_two" bindtap="queryMember">成员管理</text>

@@ -3,11 +3,11 @@
     "pages/index/index",
     "pages/my/my",
     "pages/login/login",
-    "pages/test/test",
     "pages/createClass/createClass",
     "pages/successClass/successClass",
     "pages/myclass/myclass",
-    "pages/joinclass/joinclass"
+    "pages/joinclass/joinclass",
+    "pages/classMember/classMember"
   ],
   "window": {
     "backgroundTextStyle": "light",

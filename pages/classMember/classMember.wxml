@@ -1,0 +1,5 @@
+<i-panel title="课程邀请码">
+    <view style="padding: 15px;">
+      <text selectable="true">{{cid}}</text>
+    </view>
+</i-panel>

@@ -1,8 +1,0 @@
-{
-  "component": true,
-  "usingComponents": {
-    "i-action-sheet": "../../dist/action-sheet/index",
-    "i-button": "../../dist/button/index",
-    "i-message": "../../dist/message/index"
-  }
-}
