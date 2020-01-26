@@ -20,3 +20,47 @@
 .text_two{
    margin-left: 32rpx;
 }
+
+.text_three{
+   margin-left: 68rpx;
+}
+
+.image_two{
+  width: 65px;
+  height: 65px;
+  margin-top: 15px;
+  margin-left: 40rpx;
+}
+
+.text_four{
+  margin-left: 80rpx;
+}
+
+.img_show{
+  width: 65px;
+  height: 65px;
+  margin-top: 15px;
+  margin-left: 40rpx;
+}
+
+.img_hide{
+  display: none;
+  width: 65px;
+  height: 65px;
+  margin-top: 15px;
+  margin-left: 40rpx;
+}
+
+.text_show{
+  margin-left: 80rpx;
+}
+
+.text_hide{
+  margin-left: 80rpx;
+  display: none;
+}
+
+.view_two{
+  width: 100vw;
+  height: 15vh;
+}

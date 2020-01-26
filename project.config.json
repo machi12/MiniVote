@@ -91,6 +91,20 @@
 					"id": -1,
 					"name": "myclass",
 					"pathName": "pages/myclass/myclass",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "myVote",
+					"pathName": "pages/myvote/myvote",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "createvote",
+					"pathName": "pages/createvote/createvote",
 					"scene": null
 				}
 			]

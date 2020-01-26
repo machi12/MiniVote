@@ -1,0 +1,17 @@
+.view_one{
+  width: 100vw;
+  height: 85vh;
+}
+
+.view_two{
+  width: 100vw;
+  height: 15vh;
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+}
+
+.img_one{
+  width: 80px;
+  height: 80px;
+}

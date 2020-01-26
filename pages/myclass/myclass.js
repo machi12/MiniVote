@@ -8,7 +8,8 @@ Page({
    */
   data: {
     cname: "高等数学",
-    cid: "ASER6677QS"
+    cid: "ASER6677QS",
+    visible: false
   },
 
   queryMember: function(){
@@ -17,11 +18,23 @@ Page({
     })
   },
 
+  vote: function(){
+    wx.navigateTo({
+      url: "../vote/vote?cid=" + this.data.cid
+    })
+  },
+
+  myVote: function () {
+    wx.navigateTo({
+      url: "../myvote/myvote?cid=" + this.data.cid
+    })
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log("this a happy year", options.cid);
+    //console.log("this a happy year", options.cid);
 
     const cid = options.cid;
 
@@ -41,6 +54,23 @@ Page({
         });
         console.log(this.data.cname);
         console.log(this.data.cid);
+      }
+    });
+    
+    db.collection('class').where({
+      tid: app.globalData.openid,
+      _id: cid
+    }).get({
+      success: res => {
+        if(res.data.length == 1){
+          this.setData({
+            visible: true
+          })
+        }else{
+          this.setData({
+            visible: false
+          })
+        }
       }
     })
   },

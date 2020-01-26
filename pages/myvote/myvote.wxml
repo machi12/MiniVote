@@ -1,0 +1,7 @@
+<view class="view_one">
+  
+</view>
+
+<view class="view_two">
+  <image src="/images/write.png" class="img_one" bindtap="createVote"></image>
+</view>

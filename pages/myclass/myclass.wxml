@@ -2,6 +2,12 @@
   <text class="text_one">{{cname}}</text>
 </view>
 
-<image src="/images/member.png" class="image_one" bindtap="queryMember"></image>
-<text>\n</text>
-<text class="text_two" bindtap="queryMember">成员管理</text>
+<view class="view_two">
+  <image src="/images/member.png" class="image_one" bindtap="queryMember"></image>
+  <image src="/images/vote.png" class="image_two" bindtap="vote"></image>
+  <image src="/images/myvote.png" bindtap="myVote" class="{{visible?'img_show':'img_hide'}}"></image>
+  <text>\n</text>
+  <text class="text_two" bindtap="queryMember">成员管理</text>
+  <text class="text_three" bindtap="vote">投票</text>
+  <text class="text_four" bindtap="myVote" class="{{visible?'text_show':'text_hide'}}">发起投票</text>
+</view>

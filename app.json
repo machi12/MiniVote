@@ -7,7 +7,10 @@
     "pages/successClass/successClass",
     "pages/myclass/myclass",
     "pages/joinclass/joinclass",
-    "pages/classMember/classMember"
+    "pages/classMember/classMember",
+    "pages/vote/vote",
+    "pages/myvote/myvote",
+    "pages/createvote/createvote"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -1,0 +1,34 @@
+.line_01{
+  background: #e9eaec;
+  width: 100%;
+  height: 40rpx;
+}
+
+.line_02{
+  background: #e9eaec;
+  width: 100%;
+  height: 60rpx;
+}
+
+.line_03{
+  background: #e9eaec;
+  width: 100%;
+  height: 80rpx;
+}
+
+.text_01{
+  font-size: 13px;
+  color: #80848f;
+}
+
+.line_04{
+  background: #e9eaec;
+  width: 100%;
+  height: 100rpx;
+}
+
+button{
+  margin-top: 60rpx;
+  background-color: #19be6b;
+  color: azure;
+}
