@@ -1,12 +1,12 @@
 <view class="line_01"></view>
 <i-panel title="">
-    <i-input value="{{value}}" placeholder="请输入投票的标题" />
+    <i-input value="{{value}}" placeholder="请输入投票的标题" bind:change="titleChange"/>
 </i-panel>
 
 <view class="line_02"></view>
 <i-panel title="">
   <block wx:for="{{optionList}}" wx:key="{{index}}">
-    <i-input value="" title="选项{{index + 1}}" autofocus placeholder="选项内容" />
+    <i-input value="{{item.value}}" title="选项{{index + 1}}" autofocus placeholder="选项内容" maxlength="100" data-value="{{index + 1}}" bind:change="myChange"/>
   </block>
 </i-panel>
 <i-panel title="">
@@ -21,10 +21,10 @@
 
 <view>
   <i-panel title="">
-    <i-radio-group current="{{current}}" bindchange="handleFruitChange">
+    <i-radio-group current="{{current}}" bindchange="handleCurrentChange">
         <i-radio  position="right" value="单选">
         </i-radio>
-        <i-radio  position="right" value="双选">
+        <i-radio  position="right" value="多选">
         </i-radio>
     </i-radio-group>
 </i-panel>
@@ -34,4 +34,4 @@
   <text class="text_01">单选或多选</text>
 </view>
 
-<button bindtap="click">确认发布</button>
+<button bindtap="click">预存</button>

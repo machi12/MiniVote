@@ -5,12 +5,13 @@ Page({
    * 页面的初始数据
    */
   data: {
-    cid: ""
+    cid: "",
+    tid: ""
   },
 
   createVote: function(){
     wx.navigateTo({
-      url: "../createvote/createvote?cid=" + this.data.cid
+      url: "../createvote/createvote?cid=" + this.data.cid + "&tid=" + this.data.tid
     })
   },
 
@@ -19,7 +20,8 @@ Page({
    */
   onLoad: function (options) {
     this.setData({
-      cid: options.cid 
+      cid: options.cid,
+      tid: options.tid 
     })
   },
 

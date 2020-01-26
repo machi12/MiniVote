@@ -7,9 +7,10 @@ Page({
    * 页面的初始数据
    */
   data: {
-    cname: "高等数学",
-    cid: "ASER6677QS",
-    visible: false
+    cname: "",
+    cid: "",
+    visible: false,
+    tid: ""
   },
 
   queryMember: function(){
@@ -26,7 +27,7 @@ Page({
 
   myVote: function () {
     wx.navigateTo({
-      url: "../myvote/myvote?cid=" + this.data.cid
+      url: "../myvote/myvote?cid=" + this.data.cid + "&tid=" + this.data.tid
     })
   },
 
@@ -43,6 +44,7 @@ Page({
     db.collection('class').where({
       _id: cid
     }).field({
+      tid: true,
       cname: true,
       _id: false
     }).get({
@@ -50,6 +52,7 @@ Page({
         console.log("success", res.data);
         this.setData({
           cname: res.data[0].cname,
+          tid: res.data[0].tid,
           cid: cid
         });
         console.log(this.data.cname);

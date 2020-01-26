@@ -5,22 +5,33 @@ Page({
    * 页面的初始数据
    */
   data: {
+    title: "",
     value: "",
     optionList: [
       {
-        icon: ''
+        value: ""
       },
       {
-        icon: ''
+        value: ""
       }
     ],
     value1: 2,
+    current: "单选",
+    cid: "",
+    tid: ""
   },
 
-  handleFruitChange({ detail = {} }) {
+  titleChange: function(event){
+    this.setData({
+      title: event.detail.detail.value
+    });
+  },
+
+  handleCurrentChange({ detail = {} }) {
     this.setData({
       current: detail.value
     });
+    // console.log("current: ", this.data.current);
   },
 
   handleChange({ detail }) {
@@ -32,7 +43,7 @@ Page({
 
     if(len > 0){
       for(var i = 0; i < len; i++){
-        _optionList.push({ icon: '' });
+        _optionList.push({ value: '' });
       }
     }
     else if(len < 0){
@@ -50,13 +61,37 @@ Page({
   },
 
   click: function(){
+    var len = this.data.optionList.length;
+    console.log("长度为: ", len);
 
+    var str = "";
+    for(var i = 0; i < len; i++){
+      str += this.data.optionList[i].value + ".|.";
+      //console.log("machi   ", this.data.optionList);
+    }
+
+    
+
+    
+  },
+
+  myChange: function(event){
+    //console.log("value: ", event.currentTarget.dataset.value);
+    //console.log("value: ", event.detail.detail.value);
+    this.data.optionList[event.currentTarget.dataset.value - 1].value = event.detail.detail.value;
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.setData({
+      cid: options.cid,
+      tid: options.tid
+    });
+
+    console.log("the cid is ", this.data.cid);
+    console.log("the tid is ", this.data.tid);
 
   },
 
