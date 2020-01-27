@@ -10,7 +10,8 @@
     "pages/classMember/classMember",
     "pages/vote/vote",
     "pages/myvote/myvote",
-    "pages/createvote/createvote"
+    "pages/createvote/createvote",
+    "pages/thisvote/thisvote"
   ],
   "window": {
     "backgroundTextStyle": "light",

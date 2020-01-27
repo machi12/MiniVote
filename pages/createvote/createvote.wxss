@@ -27,8 +27,14 @@
   height: 100rpx;
 }
 
-button{
+.button_01{
   margin-top: 60rpx;
   background-color: #19be6b;
+  color: azure;
+}
+
+.button_02{
+  margin-top: 60rpx;
+  background-color: #2d8cf0;
   color: azure;
 }

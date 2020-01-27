@@ -60,9 +60,9 @@ Page({
 
   },
 
-  click: function(){
+  prestore: function(){
     var len = this.data.optionList.length;
-    console.log("长度为: ", len);
+    // console.log("长度为: ", len);
 
     var str = "";
     for(var i = 0; i < len; i++){
@@ -71,8 +71,57 @@ Page({
     }
 
     
+    wx.cloud.callFunction({
+      name: 'addVote',
+      data: {
+        cid: this.data.cid,
+        tid: this.data.tid,
+        title: this.data.title,
+        content: str,
+        variety: this.data.current,
+        status: 0
+      },
+      success: res => {
+        // console.log("addVote success, ", res);
+        wx.navigateTo({
+          url: "../myvote/myvote?cid=" + this.data.cid + "&tid=" + this.data.tid
+        })
+      }
+    });
 
-    
+    console.log("call");
+  },
+
+  publish: function(){
+    var len = this.data.optionList.length;
+    // console.log("长度为: ", len);
+
+    var str = "";
+    for (var i = 0; i < len; i++) {
+      str += this.data.optionList[i].value + ".|.";
+      //console.log("machi   ", this.data.optionList);
+    }
+
+
+    wx.cloud.callFunction({
+      name: 'addVote',
+      data: {
+        cid: this.data.cid,
+        tid: this.data.tid,
+        title: this.data.title,
+        content: str,
+        variety: this.data.current,
+        status: 1
+      },
+      success: res => {
+        // console.log("addVote success, ", res);
+        wx.navigateTo({
+          url: "../myvote/myvote?cid=" + this.data.cid + "&tid=" + this.data.tid
+        })
+      }
+    });
+
+    console.log("call");
   },
 
   myChange: function(event){

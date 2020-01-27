@@ -1,6 +1,6 @@
 <view class="line_01"></view>
 <i-panel title="">
-    <i-input value="{{value}}" placeholder="请输入投票的标题" bind:change="titleChange"/>
+    <i-input value="{{value}}" placeholder="请输入投票的标题" bind:change="titleChange" maxlength="100"/>
 </i-panel>
 
 <view class="line_02"></view>
@@ -34,4 +34,5 @@
   <text class="text_01">单选或多选</text>
 </view>
 
-<button bindtap="click">预存</button>
+<button bindtap="prestore" class="button_01">预存</button>
+<button bindtap="publish" class="button_02">发布</button>

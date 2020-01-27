@@ -3,6 +3,8 @@ const cloud = require('wx-server-sdk')
 
 cloud.init()
 
+const db = cloud.database();
+
 // 云函数入口函数
 exports.main = async (event, context) => {
   return await db.collection('vote').add({
@@ -11,7 +13,8 @@ exports.main = async (event, context) => {
       tid: event.tid,
       title: event.title,
       content: event.content,
-      variety: event.variety
+      variety: event.variety,
+      status: event.status
     }
   })
 }

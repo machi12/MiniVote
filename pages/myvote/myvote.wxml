@@ -1,5 +1,23 @@
 <view class="view_one">
-  
+  <i-tabs current="{{ current }}" bindchange="handleChange">
+    <i-tab key="tab1" title="我的投票"></i-tab>
+    <i-tab key="tab2" title="预存投票"></i-tab>
+</i-tabs>
+
+<view wx:if="{{a}}">
+<block wx:for="{{voteList}}" wx:key="{{index}}">
+  <i-card title="{{item.title}}" extra="进入" thumb="/images/publishVote.png" data-value="{{item._id}}" bindtap="enterVote">
+</i-card>
+</block>
+</view>
+
+<view wx:if="{{b}}">
+<block wx:for="{{voteList}}" wx:key="{{index}}">
+  <i-card title="{{item.title}}" extra="发布" thumb="/images/prestoreVote.png" data-value="{{item._id}}" bindtap="publishVote">
+</i-card>
+</block>
+</view>
+
 </view>
 
 <view class="view_two">
